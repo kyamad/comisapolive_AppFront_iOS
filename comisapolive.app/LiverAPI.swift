@@ -2,17 +2,30 @@ import Foundation
 
 // MARK: - Data Models
 struct LiverResponse: Codable {
-    let timestamp: Int64?
+    let timestamp: TimeInterval?
     let total: Int?
     let data: [Liver]?
     
-    // 新しいAPI構造対応
+    // 新しいAPI構造対応（timestampの型変更対応）
     init(from decoder: Decoder) throws {
         let container = try? decoder.container(keyedBy: CodingKeys.self)
         
         if let container = container {
             // オブジェクト形式の場合（新API構造）
-            timestamp = try container.decodeIfPresent(Int64.self, forKey: .timestamp)
+            // timestampの型変更対応：String（ISO 8601）または数値型
+            if let stringTimestamp = try? container.decode(String.self, forKey: .timestamp) {
+                // ISO 8601文字列をタイムスタンプに変換
+                timestamp = ISO8601DateFormatter().date(from: stringTimestamp)?.timeIntervalSince1970
+            } else if let numericTimestamp = try? container.decode(TimeInterval.self, forKey: .timestamp) {
+                // 従来の数値型
+                timestamp = numericTimestamp
+            } else if let int64Timestamp = try? container.decode(Int64.self, forKey: .timestamp) {
+                // Int64型（後方互換性）
+                timestamp = TimeInterval(int64Timestamp / 1000) // ミリ秒を秒に変換
+            } else {
+                timestamp = nil
+            }
+            
             total = try container.decodeIfPresent(Int.self, forKey: .total)
             data = try container.decodeIfPresent([Liver].self, forKey: .data)
         } else {
