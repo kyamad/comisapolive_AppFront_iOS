@@ -1,0 +1,737 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B76C4D0088FA46058B6CE77 /* Pods_comisapolive_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB160E856548E86BFA6D73B /* Pods_comisapolive_appTests.framework */; };
+		4AC754D073F8AC4E24AD980E /* Pods_comisapolive_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B65FD816CA389921A98F90 /* Pods_comisapolive_app.framework */; };
+		A6F1EF2E77C4C96FCAAE6E7C /* Pods_comisapolive_app_comisapolive_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6988CBC72789AA3C52A6BE49 /* Pods_comisapolive_app_comisapolive_appUITests.framework */; };
+		A8C9FCDA2D827EC600B7C025 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C9FCD92D827EC600B7C025 /* WebKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A8C9FC922D794A4F00B7C025 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A8C9FC792D794A4E00B7C025 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A8C9FC802D794A4E00B7C025;
+			remoteInfo = comisapolive.app;
+		};
+		A8C9FC9C2D794A4F00B7C025 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A8C9FC792D794A4E00B7C025 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A8C9FC802D794A4E00B7C025;
+			remoteInfo = comisapolive.app;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		067B99794FE85A07E489AAB1 /* Pods-comisapolive.app-comisapolive.appUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comisapolive.app-comisapolive.appUITests.debug.xcconfig"; path = "Target Support Files/Pods-comisapolive.app-comisapolive.appUITests/Pods-comisapolive.app-comisapolive.appUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		18B65FD816CA389921A98F90 /* Pods_comisapolive_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_comisapolive_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		25057BDF9C829DD9F13F90FC /* Pods-comisapolive.app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comisapolive.app.debug.xcconfig"; path = "Target Support Files/Pods-comisapolive.app/Pods-comisapolive.app.debug.xcconfig"; sourceTree = "<group>"; };
+		29697B020C683223514E1235 /* Pods-comisapolive.appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comisapolive.appTests.release.xcconfig"; path = "Target Support Files/Pods-comisapolive.appTests/Pods-comisapolive.appTests.release.xcconfig"; sourceTree = "<group>"; };
+		4DDAE9566362773299CB6D2D /* Pods-comisapolive.app-comisapolive.appUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comisapolive.app-comisapolive.appUITests.release.xcconfig"; path = "Target Support Files/Pods-comisapolive.app-comisapolive.appUITests/Pods-comisapolive.app-comisapolive.appUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6988CBC72789AA3C52A6BE49 /* Pods_comisapolive_app_comisapolive_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_comisapolive_app_comisapolive_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AB160E856548E86BFA6D73B /* Pods_comisapolive_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_comisapolive_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90B2FBA1E8025E2BEB153413 /* Pods-comisapolive.app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comisapolive.app.release.xcconfig"; path = "Target Support Files/Pods-comisapolive.app/Pods-comisapolive.app.release.xcconfig"; sourceTree = "<group>"; };
+		A8C9FC812D794A4E00B7C025 /* comisapolive.app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = comisapolive.app.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8C9FC912D794A4F00B7C025 /* comisapolive.appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = comisapolive.appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8C9FC9B2D794A4F00B7C025 /* comisapolive.appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = comisapolive.appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8C9FCD92D827EC600B7C025 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		FA35F78DDEECCB6541C97B7F /* Pods-comisapolive.appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comisapolive.appTests.debug.xcconfig"; path = "Target Support Files/Pods-comisapolive.appTests/Pods-comisapolive.appTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A8EDA3342D841CEE00223F47 /* Exceptions for "comisapolive.app" folder in "comisapolive.app" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A8C9FC802D794A4E00B7C025 /* comisapolive.app */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A8C9FC832D794A4E00B7C025 /* comisapolive.app */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A8EDA3342D841CEE00223F47 /* Exceptions for "comisapolive.app" folder in "comisapolive.app" target */,
+			);
+			path = comisapolive.app;
+			sourceTree = "<group>";
+		};
+		A8C9FC942D794A4F00B7C025 /* comisapolive.appTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = comisapolive.appTests;
+			sourceTree = "<group>";
+		};
+		A8C9FC9E2D794A4F00B7C025 /* comisapolive.appUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = comisapolive.appUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A8C9FC7E2D794A4E00B7C025 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8C9FCDA2D827EC600B7C025 /* WebKit.framework in Frameworks */,
+				4AC754D073F8AC4E24AD980E /* Pods_comisapolive_app.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8C9FC8E2D794A4F00B7C025 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B76C4D0088FA46058B6CE77 /* Pods_comisapolive_appTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8C9FC982D794A4F00B7C025 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6F1EF2E77C4C96FCAAE6E7C /* Pods_comisapolive_app_comisapolive_appUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5E056AF01B05F3EB06DB3470 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				25057BDF9C829DD9F13F90FC /* Pods-comisapolive.app.debug.xcconfig */,
+				90B2FBA1E8025E2BEB153413 /* Pods-comisapolive.app.release.xcconfig */,
+				067B99794FE85A07E489AAB1 /* Pods-comisapolive.app-comisapolive.appUITests.debug.xcconfig */,
+				4DDAE9566362773299CB6D2D /* Pods-comisapolive.app-comisapolive.appUITests.release.xcconfig */,
+				FA35F78DDEECCB6541C97B7F /* Pods-comisapolive.appTests.debug.xcconfig */,
+				29697B020C683223514E1235 /* Pods-comisapolive.appTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A8C9FC782D794A4E00B7C025 = {
+			isa = PBXGroup;
+			children = (
+				A8C9FC832D794A4E00B7C025 /* comisapolive.app */,
+				A8C9FC942D794A4F00B7C025 /* comisapolive.appTests */,
+				A8C9FC9E2D794A4F00B7C025 /* comisapolive.appUITests */,
+				A8C9FCD82D827EC500B7C025 /* Frameworks */,
+				A8C9FC822D794A4E00B7C025 /* Products */,
+				5E056AF01B05F3EB06DB3470 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		A8C9FC822D794A4E00B7C025 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A8C9FC812D794A4E00B7C025 /* comisapolive.app.app */,
+				A8C9FC912D794A4F00B7C025 /* comisapolive.appTests.xctest */,
+				A8C9FC9B2D794A4F00B7C025 /* comisapolive.appUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A8C9FCD82D827EC500B7C025 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A8C9FCD92D827EC600B7C025 /* WebKit.framework */,
+				18B65FD816CA389921A98F90 /* Pods_comisapolive_app.framework */,
+				6988CBC72789AA3C52A6BE49 /* Pods_comisapolive_app_comisapolive_appUITests.framework */,
+				6AB160E856548E86BFA6D73B /* Pods_comisapolive_appTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A8C9FC802D794A4E00B7C025 /* comisapolive.app */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8C9FCA52D794A4F00B7C025 /* Build configuration list for PBXNativeTarget "comisapolive.app" */;
+			buildPhases = (
+				2E90A4633E9E550FB9AD2DA0 /* [CP] Check Pods Manifest.lock */,
+				A8C9FC7D2D794A4E00B7C025 /* Sources */,
+				A8C9FC7E2D794A4E00B7C025 /* Frameworks */,
+				A8C9FC7F2D794A4E00B7C025 /* Resources */,
+				F19DD8EC8C9FB98A2E74A27E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A8C9FC832D794A4E00B7C025 /* comisapolive.app */,
+			);
+			name = comisapolive.app;
+			productName = comisapolive.app;
+			productReference = A8C9FC812D794A4E00B7C025 /* comisapolive.app.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A8C9FC902D794A4F00B7C025 /* comisapolive.appTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8C9FCA82D794A4F00B7C025 /* Build configuration list for PBXNativeTarget "comisapolive.appTests" */;
+			buildPhases = (
+				ECCBE3C0218B6FDB1797F74E /* [CP] Check Pods Manifest.lock */,
+				A8C9FC8D2D794A4F00B7C025 /* Sources */,
+				A8C9FC8E2D794A4F00B7C025 /* Frameworks */,
+				A8C9FC8F2D794A4F00B7C025 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A8C9FC932D794A4F00B7C025 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A8C9FC942D794A4F00B7C025 /* comisapolive.appTests */,
+			);
+			name = comisapolive.appTests;
+			productName = comisapolive.appTests;
+			productReference = A8C9FC912D794A4F00B7C025 /* comisapolive.appTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A8C9FC9A2D794A4F00B7C025 /* comisapolive.appUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8C9FCAB2D794A4F00B7C025 /* Build configuration list for PBXNativeTarget "comisapolive.appUITests" */;
+			buildPhases = (
+				9226E0A2439514FC6DA745DD /* [CP] Check Pods Manifest.lock */,
+				A8C9FC972D794A4F00B7C025 /* Sources */,
+				A8C9FC982D794A4F00B7C025 /* Frameworks */,
+				A8C9FC992D794A4F00B7C025 /* Resources */,
+				614D7F9E30006DAA4A3AF355 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A8C9FC9D2D794A4F00B7C025 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A8C9FC9E2D794A4F00B7C025 /* comisapolive.appUITests */,
+			);
+			name = comisapolive.appUITests;
+			productName = comisapolive.appUITests;
+			productReference = A8C9FC9B2D794A4F00B7C025 /* comisapolive.appUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A8C9FC792D794A4E00B7C025 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					A8C9FC802D794A4E00B7C025 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					A8C9FC902D794A4F00B7C025 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = A8C9FC802D794A4E00B7C025;
+					};
+					A8C9FC9A2D794A4F00B7C025 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = A8C9FC802D794A4E00B7C025;
+					};
+				};
+			};
+			buildConfigurationList = A8C9FC7C2D794A4E00B7C025 /* Build configuration list for PBXProject "comisapolive.app" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A8C9FC782D794A4E00B7C025;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A8C9FC822D794A4E00B7C025 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A8C9FC802D794A4E00B7C025 /* comisapolive.app */,
+				A8C9FC902D794A4F00B7C025 /* comisapolive.appTests */,
+				A8C9FC9A2D794A4F00B7C025 /* comisapolive.appUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A8C9FC7F2D794A4E00B7C025 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8C9FC8F2D794A4F00B7C025 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8C9FC992D794A4F00B7C025 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2E90A4633E9E550FB9AD2DA0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-comisapolive.app-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		614D7F9E30006DAA4A3AF355 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-comisapolive.app-comisapolive.appUITests/Pods-comisapolive.app-comisapolive.appUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-comisapolive.app-comisapolive.appUITests/Pods-comisapolive.app-comisapolive.appUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-comisapolive.app-comisapolive.appUITests/Pods-comisapolive.app-comisapolive.appUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9226E0A2439514FC6DA745DD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-comisapolive.app-comisapolive.appUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECCBE3C0218B6FDB1797F74E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-comisapolive.appTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F19DD8EC8C9FB98A2E74A27E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-comisapolive.app/Pods-comisapolive.app-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-comisapolive.app/Pods-comisapolive.app-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-comisapolive.app/Pods-comisapolive.app-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A8C9FC7D2D794A4E00B7C025 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8C9FC8D2D794A4F00B7C025 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8C9FC972D794A4F00B7C025 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A8C9FC932D794A4F00B7C025 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A8C9FC802D794A4E00B7C025 /* comisapolive.app */;
+			targetProxy = A8C9FC922D794A4F00B7C025 /* PBXContainerItemProxy */;
+		};
+		A8C9FC9D2D794A4F00B7C025 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A8C9FC802D794A4E00B7C025 /* comisapolive.app */;
+			targetProxy = A8C9FC9C2D794A4F00B7C025 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A8C9FCA32D794A4F00B7C025 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/comisapolive.app/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A8C9FCA42D794A4F00B7C025 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/comisapolive.app/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A8C9FCA62D794A4F00B7C025 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25057BDF9C829DD9F13F90FC /* Pods-comisapolive.app.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_ASSET_PATHS = "\"comisapolive.app/Preview Content\"";
+				DEVELOPMENT_TEAM = 53H5QX6UR3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "コミサポライブ";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3;
+				PRODUCT_BUNDLE_IDENTIFIER = comisapolive.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A8C9FCA72D794A4F00B7C025 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90B2FBA1E8025E2BEB153413 /* Pods-comisapolive.app.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_ASSET_PATHS = "\"comisapolive.app/Preview Content\"";
+				DEVELOPMENT_TEAM = 53H5QX6UR3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "コミサポライブ";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3;
+				PRODUCT_BUNDLE_IDENTIFIER = comisapolive.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		A8C9FCA92D794A4F00B7C025 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA35F78DDEECCB6541C97B7F /* Pods-comisapolive.appTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z775M62PP7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "comisapolive.app.comisapolive-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/comisapolive.app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/comisapolive.app";
+			};
+			name = Debug;
+		};
+		A8C9FCAA2D794A4F00B7C025 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29697B020C683223514E1235 /* Pods-comisapolive.appTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z775M62PP7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "comisapolive.app.comisapolive-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/comisapolive.app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/comisapolive.app";
+			};
+			name = Release;
+		};
+		A8C9FCAC2D794A4F00B7C025 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 067B99794FE85A07E489AAB1 /* Pods-comisapolive.app-comisapolive.appUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z775M62PP7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "comisapolive.app.comisapolive-appUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = comisapolive.app;
+			};
+			name = Debug;
+		};
+		A8C9FCAD2D794A4F00B7C025 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DDAE9566362773299CB6D2D /* Pods-comisapolive.app-comisapolive.appUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z775M62PP7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "comisapolive.app.comisapolive-appUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = comisapolive.app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A8C9FC7C2D794A4E00B7C025 /* Build configuration list for PBXProject "comisapolive.app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8C9FCA32D794A4F00B7C025 /* Debug */,
+				A8C9FCA42D794A4F00B7C025 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8C9FCA52D794A4F00B7C025 /* Build configuration list for PBXNativeTarget "comisapolive.app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8C9FCA62D794A4F00B7C025 /* Debug */,
+				A8C9FCA72D794A4F00B7C025 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8C9FCA82D794A4F00B7C025 /* Build configuration list for PBXNativeTarget "comisapolive.appTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8C9FCA92D794A4F00B7C025 /* Debug */,
+				A8C9FCAA2D794A4F00B7C025 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8C9FCAB2D794A4F00B7C025 /* Build configuration list for PBXNativeTarget "comisapolive.appUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8C9FCAC2D794A4F00B7C025 /* Debug */,
+				A8C9FCAD2D794A4F00B7C025 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A8C9FC792D794A4E00B7C025 /* Project object */;
+}

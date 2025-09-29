@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>comisapolive.app</string>
+	<key>CFBundleName</key>
+	<string>comisapolive</string>
+	<key>CFBundleVersion</key>
+	<string>2.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.0</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-5103020251808633~7931288222</string>
+	<key>NSCameraUsageDescription</key>
+	<string>プロフィール写真の撮影のためにカメラを使用します</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>プロフィール写真の選択のためにフォトライブラリにアクセスします</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>www.comisapolive.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

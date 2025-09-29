@@ -1,0 +1,6 @@
+framework module Pods_comisapolive_appTests {
+  umbrella header "Pods-comisapolive.appTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
