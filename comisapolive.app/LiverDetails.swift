@@ -89,7 +89,7 @@ struct LiverDetails: View {
                         .background(Color(red: 0, green: 0.5, blue: 1).opacity(0.1))
                         .padding(.horizontal, 20)
                     
-                    ReviewsView()
+                    ReviewsView(liverId: "sample")
                         .padding(.vertical, 10)
                     
                     Text("チャンネルを見に行く")

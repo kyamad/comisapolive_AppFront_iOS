@@ -2,6 +2,8 @@ import SwiftUI
 
 struct LiverDetailsView: View {
     let liver: Liver
+    @StateObject private var reviewAPI = ReviewAPIClient()
+    @State private var showingReviewSubmission = false
     
     var body: some View {
         NavigationStack {
@@ -62,11 +64,33 @@ struct LiverDetailsView: View {
                         Text("口コミ評価")
                             .font(.system(size: 18, weight: .bold))
                         Spacer()
-                        HStack(spacing: 5) {
-                            ForEach(0..<5, id: \.self) { index in
-                                Image(systemName: "star.fill")
-                                    .foregroundColor(.yellow)
-                                    .font(.system(size: 16))
+                        
+                        if let stats = reviewAPI.reviewStats {
+                            HStack(spacing: 5) {
+                                ForEach(0..<5, id: \.self) { index in
+                                    Image(systemName: index < Int(stats.averageRating.rounded()) ? "star.fill" : "star")
+                                        .foregroundColor(index < Int(stats.averageRating.rounded()) ? .yellow : .gray)
+                                        .font(.system(size: 16))
+                                }
+                                
+                                Text(String(format: "%.1f", stats.averageRating))
+                                    .font(.system(size: 14))
+                                    .foregroundColor(.secondary)
+                                
+                                Text("(\(stats.reviewCount)件)")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(.secondary)
+                            }
+                        } else {
+                            HStack(spacing: 5) {
+                                ForEach(0..<5, id: \.self) { index in
+                                    Image(systemName: "star")
+                                        .foregroundColor(.gray)
+                                        .font(.system(size: 16))
+                                }
+                                Text("評価なし")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(.secondary)
                             }
                         }
                     }
@@ -103,7 +127,28 @@ struct LiverDetailsView: View {
                         .background(Color(red: 0, green: 0.5, blue: 1).opacity(0.1))
                         .padding(.horizontal, 20)
                     
-                    ReviewsView()
+                    // 口コミ投稿ボタン
+                    if !UserDefaultsManager.shared.hasReviewedLiver(liver.originalId) {
+                        Button(action: {
+                            showingReviewSubmission = true
+                        }) {
+                            Text("口コミを投稿する")
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundColor(.white)
+                                .padding(.vertical, 12)
+                                .padding(.horizontal, 30)
+                                .background(Color.green)
+                                .cornerRadius(10)
+                        }
+                        .padding(.top, 20)
+                    } else {
+                        Text("投稿済み")
+                            .font(.system(size: 14))
+                            .foregroundColor(.secondary)
+                            .padding(.top, 20)
+                    }
+                    
+                    ReviewsView(liverId: liver.originalId)
                         .padding(.vertical, 10)
                     
                     // 再度チャンネルリンクボタン
@@ -125,6 +170,14 @@ struct LiverDetailsView: View {
                 }
                 .frame(maxWidth: .infinity)
             }
+        }
+        .onAppear {
+            Task {
+                await reviewAPI.fetchReviewStats(for: liver.originalId)
+            }
+        }
+        .sheet(isPresented: $showingReviewSubmission) {
+            ReviewSubmissionView(liverId: liver.originalId, reviewAPI: reviewAPI)
         }
     }
 }
