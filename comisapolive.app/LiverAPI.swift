@@ -75,7 +75,173 @@ struct Liver: Codable, Identifiable {
     var comments: [String]? { details?.comments }
     var schedules: [Schedule]? { details?.schedules }
     var mediaLinks: [MediaLink]? { nil } // 新APIには存在しないため nil
+    var availableStreamingUrls: [StreamingUrl] {
+        guard let streamingUrls = details?.streamingUrls else { return [] }
+        return streamingUrls.filter { streamingUrl in
+            guard let url = streamingUrl.url, !url.isEmpty else { return false }
+            if let type = streamingUrl.type, type.contains("レベル") {
+                return false
+            }
+            return true
+        }
+    }
     
+    func scheduleName(for urlString: String) -> String? {
+        guard let schedules = schedules else { return nil }
+        guard let targetCanonical = Liver.canonicalUrlIdentifier(from: urlString) else { return nil }
+        if let exactMatch = schedules.first(where: { schedule in
+            guard let scheduleUrl = schedule.url else { return false }
+            guard let scheduleCanonical = Liver.canonicalUrlIdentifier(from: scheduleUrl) else { return false }
+            return targetCanonical == scheduleCanonical || Liver.urlIdentifiersEquivalent(targetCanonical, scheduleCanonical)
+        }) {
+            return exactMatch.name
+        }
+        if let targetHostKey = Liver.normalizedHostKey(from: urlString) {
+            if let hostMatch = schedules.first(where: { schedule in
+                guard let scheduleUrl = schedule.url else { return false }
+                return Liver.normalizedHostKey(from: scheduleUrl) == targetHostKey
+            }) {
+                return hostMatch.name
+            }
+        }
+        return nil
+    }
+
+    private static let platformKeywordMappings: [(display: String, keywords: [String])] = [
+        ("YouTube", ["youtube", "ユーチューブ", "youtu.be", "youtube.com"]),
+        ("TikTok", ["tiktok", "tiktok.com"]),
+        ("Twitch", ["twitch", "twitch.tv"]),
+        ("17LIVE", ["17live", "17 live", "イチナナ", "17.live"]),
+        ("Pococha", ["pococha", "ポコチャ", "pocpcha"]),
+        ("ツイキャス", ["ツイキャス", "twicas", "twitcasting"]),
+        ("ニコニコ生放送", ["ニコニコ", "niconico", "nicovideo"]),
+        ("ミクチャ", ["ミクチャ", "mixch", "mixchannel"]),
+        ("IRIAM", ["iriam"]),
+        ("BIGO LIVE", ["bigo"]),
+        ("HAKUNA", ["hakuna"]),
+        ("REALITY", ["reality"]),
+        ("Stellamy", ["stellamy"]),
+        ("SHOWROOM", ["showroom", "showroom-live"]),
+        ("OPENREC", ["openrec", "openrec.tv"]),
+        ("ふわっち", ["ふわっち", "whowatch"]),
+        ("Mirrativ", ["mirrativ"]),
+        ("LINE LIVE", ["linelive", "line live", "live.line"]),
+        ("Instagram", ["instagram", "インスタ", "instagram.com"]),
+        ("X (Twitter)", ["twitter", "ツイッター", "x (", "x(", "旧twitter"]),
+        ("Facebook", ["facebook"]),
+        ("Bilibili", ["bilibili"]),
+        ("Discord", ["discord"]),
+        ("FANBOX", ["fanbox"]),
+        ("Fantia", ["fantia"]),
+        ("BOOTH", ["booth"]),
+        ("LINE", ["line.me", "lin.ee"]),
+        ("Lit.link", ["lit.link"]),
+        ("LinkTree", ["linktr.ee"]),
+        ("OFUSE", ["ofuse.me"]),
+        ("note", ["note.com"]),
+        ("Patreon", ["patreon"]),
+        ("Pixiv", ["pixiv"]),
+        ("Skeb", ["skeb"])
+    ]
+    
+    private static func matchPlatform(from text: String) -> String? {
+        let lowercased = text.lowercased()
+        for mapping in platformKeywordMappings {
+            for keyword in mapping.keywords {
+                let keywordLower = keyword.lowercased()
+                if lowercased.contains(keywordLower) {
+                    return mapping.display
+                }
+            }
+        }
+        return nil
+    }
+    
+    private static func canonicalUrlIdentifier(from urlString: String) -> String? {
+        let trimmed = urlString.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return nil }
+        guard let url = normalizedURL(from: trimmed) else { return trimmed.lowercased() }
+        guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return trimmed.lowercased() }
+        components.scheme = nil
+        components.user = nil
+        components.password = nil
+        components.fragment = nil
+        let host = (components.host ?? "").lowercased()
+        var path = components.percentEncodedPath
+        if path.isEmpty { path = "/" }
+        if path.count > 1, path.hasSuffix("/") {
+            path.removeLast()
+        }
+        let query = components.percentEncodedQuery.map { "?\($0)" } ?? ""
+        return host + path + query
+    }
+    
+    private static func urlIdentifiersEquivalent(_ lhs: String, _ rhs: String) -> Bool {
+        if lhs == rhs { return true }
+        if lhs.hasPrefix(rhs) || rhs.hasPrefix(lhs) {
+            return true
+        }
+        // 冗長な末尾のスラッシュ差異を許容
+        let lhsTrimmed = lhs.hasSuffix("/") ? String(lhs.dropLast()) : lhs
+        let rhsTrimmed = rhs.hasSuffix("/") ? String(rhs.dropLast()) : rhs
+        if lhsTrimmed == rhsTrimmed { return true }
+        return false
+    }
+
+    private static func normalizedURL(from urlString: String) -> URL? {
+        let trimmed = urlString.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return nil }
+        if let url = URL(string: trimmed), url.scheme != nil {
+            return url
+        }
+        return URL(string: "https://" + trimmed)
+    }
+
+    static func normalizedHostKey(from urlString: String) -> String? {
+        guard let url = normalizedURL(from: urlString), let host = url.host else { return nil }
+        return normalizedHost(from: host)
+    }
+
+    static func normalizedHost(from host: String) -> String {
+        var value = host.lowercased()
+        while value.hasPrefix("www.") {
+            value.removeFirst(4)
+        }
+        while value.hasPrefix("m.") {
+            value.removeFirst(2)
+        }
+        return value
+    }
+
+    static func platformDisplayName(from rawText: String) -> String {
+        let trimmed = rawText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return "" }
+        let normalized = trimmed.replacingOccurrences(of: "　", with: " ")
+        if let match = matchPlatform(from: normalized) {
+            return match
+        }
+        if let match = matchPlatform(from: trimmed) {
+            return match
+        }
+        return trimmed
+    }
+    
+    static func platformDisplayName(from url: URL) -> String? {
+        guard let rawHost = url.host else { return nil }
+        let normalizedHostValue = normalizedHost(from: rawHost)
+        let candidates = [rawHost, normalizedHostValue]
+        for candidate in candidates {
+            if let match = matchPlatform(from: candidate) {
+                return match
+            }
+        }
+        let path = url.path
+        if let match = matchPlatform(from: normalizedHostValue + path) {
+            return match
+        }
+        return nil
+    }
+
     var fullImageURL: String {
         let baseURL = "https://liver-scraper-main.pwaserve8.workers.dev"
         
@@ -130,8 +296,7 @@ struct Liver: Codable, Identifiable {
     
     var channelUrl: String {
         // 優先順位：streamingUrls → detailUrl → デフォルト
-        if let streamingUrls = details?.streamingUrls,
-           let firstStreamingUrl = streamingUrls.first,
+        if let firstStreamingUrl = availableStreamingUrls.first,
            let url = firstStreamingUrl.url,
            !url.isEmpty {
             return url

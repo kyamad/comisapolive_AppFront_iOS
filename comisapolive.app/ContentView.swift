@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var isShowingDetail: Bool = false // ✅ 詳細画面の表示状態を管理
     @State private var selectedLiver: Liver? = nil
     @StateObject private var apiClient = LiverAPIClient()
+    @StateObject private var reviewStatsStore = ReviewStatsStore()
     
     // ジャンル一覧データ
     private let genres = [
@@ -178,10 +179,13 @@ struct ContentView: View {
                         } else {
                             List {
                                 ForEach(filteredLiversByPlatform) { liver in
-                                    PlatformLiverRow(liver: liver)
+                                    PlatformLiverRow(liver: liver, reviewStatsStore: reviewStatsStore)
                                         .contentShape(Rectangle())
                                         .onTapGesture {
                                             selectedLiver = liver
+                                        }
+                                        .task {
+                                            await reviewStatsStore.loadReviewCount(for: liver.originalId)
                                         }
                                         .listRowSeparator(.hidden)
                                         .listRowInsets(EdgeInsets())
@@ -258,8 +262,12 @@ struct GenreCardView: View {
 // プラットフォーム別ライバー行
 struct PlatformLiverRow: View {
     let liver: Liver
+    @ObservedObject var reviewStatsStore: ReviewStatsStore
     
     var body: some View {
+        let reviewCount = reviewStatsStore.reviewCount(for: liver.originalId) ?? 0
+        let displayPlatform = Liver.platformDisplayName(from: liver.platform)
+        
         HStack(alignment: .top, spacing: 10) {
             AsyncImage(url: URL(string: liver.fullImageURL)) { image in
                 image
@@ -290,12 +298,12 @@ struct PlatformLiverRow: View {
                         .scaledToFit()
                         .frame(width: 35)
                     
-                    Text("0")
+                    Text("\(reviewCount)")
                         .font(.system(size: 16, weight: .bold))
                     
                     Spacer()
                     
-                    Text("\(liver.platform)フォロワー：\(liver.followerDisplayText)")
+                    Text("\(displayPlatform)フォロワー：\(liver.followerDisplayText)")
                         .font(.system(size: 12, weight: .bold))
                         .foregroundColor(.gray)
                 }

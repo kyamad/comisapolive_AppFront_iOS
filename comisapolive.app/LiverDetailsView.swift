@@ -5,6 +5,98 @@ struct LiverDetailsView: View {
     @StateObject private var reviewAPI = ReviewAPIClient()
     @State private var showingReviewSubmission = false
     
+    private var streamingLinks: [StreamingUrl] {
+        liver.availableStreamingUrls
+    }
+    
+    private func isGenericLabel(_ text: String) -> Bool {
+        let lowercased = text.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        return ["web", "url", "link", "links", "website", "schedules_id_nested", "schedule"].contains(lowercased)
+    }
+    
+    private func resolvedURL(from urlString: String) -> URL? {
+        if let url = URL(string: urlString), url.scheme != nil {
+            return url
+        }
+        return URL(string: "https://" + urlString)
+    }
+    
+    private func streamingPlatformName(for streamingUrl: StreamingUrl, index: Int) -> String {
+        if let urlString = streamingUrl.url,
+           let scheduleName = liver.scheduleName(for: urlString),
+           !scheduleName.isEmpty,
+           !isGenericLabel(scheduleName) {
+            let displayName = Liver.platformDisplayName(from: scheduleName)
+            if !displayName.isEmpty, !isGenericLabel(displayName) {
+                return displayName
+            }
+            return scheduleName
+        }
+        if let type = streamingUrl.type, !type.isEmpty, !isGenericLabel(type) {
+            let displayName = Liver.platformDisplayName(from: type)
+            if !displayName.isEmpty, !isGenericLabel(displayName) {
+                return displayName
+            }
+        }
+        if let source = streamingUrl.source, !source.isEmpty, !isGenericLabel(source) {
+            let displayName = Liver.platformDisplayName(from: source)
+            if !displayName.isEmpty, !isGenericLabel(displayName) {
+                return displayName
+            }
+        }
+        if let urlString = streamingUrl.url,
+           let url = resolvedURL(from: urlString),
+           let inferred = Liver.platformDisplayName(from: url),
+           !isGenericLabel(inferred) {
+            return inferred
+        }
+        if let urlString = streamingUrl.url,
+           let hostKey = Liver.normalizedHostKey(from: urlString),
+           !hostKey.isEmpty {
+            return hostKey
+        }
+        return "リンク\(index + 1)"
+    }
+
+    private func streamingDetailLabel(for streamingUrl: StreamingUrl, platformName: String) -> String? {
+        let platformLower = platformName.lowercased()
+        if let urlString = streamingUrl.url,
+           let scheduleName = liver.scheduleName(for: urlString)?.trimmingCharacters(in: .whitespacesAndNewlines),
+           !scheduleName.isEmpty,
+           !isGenericLabel(scheduleName) {
+            let normalizedSchedule = Liver.platformDisplayName(from: scheduleName)
+            if normalizedSchedule.lowercased() != platformLower, !isGenericLabel(normalizedSchedule) {
+                return scheduleName
+            }
+        }
+        if let type = streamingUrl.type?.trimmingCharacters(in: .whitespacesAndNewlines),
+           !type.isEmpty,
+           !isGenericLabel(type),
+           type.lowercased() != platformLower {
+            return type
+        }
+        if let source = streamingUrl.source?.trimmingCharacters(in: .whitespacesAndNewlines),
+           !source.isEmpty,
+           !isGenericLabel(source),
+           source.lowercased() != platformLower {
+            let normalizedSource = Liver.platformDisplayName(from: source)
+            if normalizedSource.lowercased() != platformLower, !isGenericLabel(normalizedSource) {
+                return source
+            }
+        }
+        if let urlString = streamingUrl.url,
+           let url = resolvedURL(from: urlString),
+           let host = url.host,
+           !host.isEmpty,
+           Liver.platformDisplayName(from: url) == nil {
+            let hostKey = Liver.normalizedHost(from: host)
+            if hostKey.lowercased() != platformLower {
+                return hostKey
+            }
+        }
+        return nil
+    }
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -34,7 +126,7 @@ struct LiverDetailsView: View {
                         Text("活動場所")
                             .font(.system(size: 18, weight: .bold))
                         Spacer()
-                        Text(liver.platform)
+                        Text(Liver.platformDisplayName(from: liver.platform))
                             .multilineTextAlignment(.trailing)
                     }
                     .padding(.horizontal, 20)
@@ -97,21 +189,63 @@ struct LiverDetailsView: View {
                     .padding(.horizontal, 20)
                     .padding(.top, 10)
                     
-                    // チャンネルリンクボタン（現在は固定URL、将来的にAPI改善予定）
-                    Button(action: {
-                        if let url = URL(string: liver.channelUrl) {
-                            UIApplication.shared.open(url)
+                    if streamingLinks.isEmpty {
+                        Button(action: {
+                            if let url = resolvedURL(from: liver.channelUrl) {
+                                UIApplication.shared.open(url)
+                            }
+                        }) {
+                            Text("チャンネルを見に行く")
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundColor(.white)
+                                .padding(.vertical, 12)
+                                .padding(.horizontal, 30)
+                                .background(Color.blue)
+                                .cornerRadius(10)
                         }
-                    }) {
-                        Text("チャンネルを見に行く")
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundColor(.white)
-                            .padding(.vertical, 12)
-                            .padding(.horizontal, 30)
-                            .background(Color.blue)
-                            .cornerRadius(10)
+                        .padding(.top, 25)
+                    } else {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("配信チャンネル")
+                                .font(.system(size: 18, weight: .bold))
+                            
+                            ForEach(Array(streamingLinks.enumerated()), id: \.offset) { index, streamingUrl in
+                                if let urlString = streamingUrl.url,
+                                   let url = resolvedURL(from: urlString) {
+                                    let platformName = streamingPlatformName(for: streamingUrl, index: index)
+                                    let detailLabel = streamingDetailLabel(for: streamingUrl, platformName: platformName)
+                                    Button(action: {
+                                        UIApplication.shared.open(url)
+                                    }) {
+                                        HStack {
+                                            VStack(alignment: .leading, spacing: 2) {
+                                                Text(platformName)
+                                                    .font(.system(size: 16, weight: .semibold))
+                                                if let detailLabel = detailLabel {
+                                                    Text(detailLabel)
+                                                        .font(.system(size: 12))
+                                                        .foregroundColor(Color.white.opacity(0.9))
+                                                }
+                                            }
+                                            Spacer()
+                                            Image(systemName: "arrow.up.right.square")
+                                                .font(.system(size: 16, weight: .semibold))
+                                        }
+                                        .foregroundColor(.white)
+                                        .padding(.vertical, 12)
+                                        .padding(.horizontal, 16)
+                                        .frame(maxWidth: .infinity)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .fill(Color.blue)
+                                        )
+                                    }
+                                }
+                            }
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.top, 25)
                     }
-                    .padding(.top, 25)
                     
                     Text("概       要")
                         .font(.system(size: 20, weight: .bold))
@@ -151,22 +285,25 @@ struct LiverDetailsView: View {
                     ReviewsView(liverId: liver.originalId)
                         .padding(.vertical, 10)
                     
-                    // 再度チャンネルリンクボタン
-                    Button(action: {
-                        if let url = URL(string: liver.channelUrl) {
-                            UIApplication.shared.open(url)
+                    if streamingLinks.isEmpty {
+                        Button(action: {
+                            if let url = URL(string: liver.channelUrl) {
+                                UIApplication.shared.open(url)
+                            }
+                        }) {
+                            Text("チャンネルを見に行く")
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundColor(.white)
+                                .padding(.vertical, 12)
+                                .padding(.horizontal, 30)
+                                .background(Color.blue)
+                                .cornerRadius(10)
                         }
-                    }) {
-                        Text("チャンネルを見に行く")
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundColor(.white)
-                            .padding(.vertical, 12)
-                            .padding(.horizontal, 30)
-                            .background(Color.blue)
-                            .cornerRadius(10)
+                        .padding(.top, 30)
                     }
-                    .padding(.top, 30)
-                    .padding(.bottom, 50)
+                    
+                    Color.clear
+                        .frame(height: 50)
                 }
                 .frame(maxWidth: .infinity)
             }

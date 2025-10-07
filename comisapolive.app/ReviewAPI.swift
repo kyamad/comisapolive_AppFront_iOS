@@ -101,7 +101,7 @@ class ReviewAPIClient: ObservableObject {
         errorMessage = nil
         
         guard let url = URL(string: "\(baseURL)/api/reviews/\(liverId)") else {
-            errorMessage = "Invalid URL"
+            errorMessage = "URLが不正です"
             isLoading = false
             return
         }
@@ -170,7 +170,7 @@ class ReviewAPIClient: ObservableObject {
         successMessage = nil
         
         guard let url = URL(string: "\(baseURL)/api/reviews") else {
-            errorMessage = "Invalid URL"
+            errorMessage = "URLが不正です"
             isSubmitting = false
             return false
         }
@@ -194,7 +194,16 @@ class ReviewAPIClient: ObservableObject {
                 let submissionResponse = try decoder.decode(ReviewSubmissionResponse.self, from: data)
                 
                 if submissionResponse.success {
-                    successMessage = submissionResponse.message ?? "口コミを投稿しました"
+                    // APIからの英語メッセージを日本語に変換
+                    if let apiMessage = submissionResponse.message {
+                        if apiMessage.contains("Review submitted successfully") {
+                            successMessage = "口コミを投稿しました"
+                        } else {
+                            successMessage = apiMessage
+                        }
+                    } else {
+                        successMessage = "口コミを投稿しました"
+                    }
                     
                     // 投稿成功時は口コミリストを再取得
                     await fetchReviews(for: liverId)

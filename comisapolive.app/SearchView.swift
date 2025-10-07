@@ -173,6 +173,7 @@ struct SearchView: View {
                         .background(Color.white)
                         .onTapGesture {
                             searchText = historyItem
+                            addToSearchHistory(historyItem)
                             isSearchFieldFocused = false
                         }
                         
@@ -262,6 +263,7 @@ struct SearchView: View {
                         ForEach(filteredLivers) { liver in
                             SearchResultCard(liver: liver)
                                 .onTapGesture {
+                                    isSearchFieldFocused = false
                                     selectedLiver = liver
                                 }
                         }
@@ -273,10 +275,8 @@ struct SearchView: View {
         }
         .contentShape(Rectangle())
         .onTapGesture {
-            // 検索履歴表示エリア以外をタップした時のみフォーカスを外す
-            if !isSearchFieldFocused || (!searchText.isEmpty || searchHistory.isEmpty) {
-                isSearchFieldFocused = false
-            }
+            // キーボード以外の場所をタップした時にキーボードを閉じる
+            isSearchFieldFocused = false
         }
         .onAppear {
             loadSearchHistory()
