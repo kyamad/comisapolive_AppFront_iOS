@@ -10,6 +10,8 @@ import GoogleMobileAds
 
 @main
 struct comisapolive_appApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+
     init() {
         MobileAds.shared.start { status in
             print("AdMob SDK initialized with status: \(status)")

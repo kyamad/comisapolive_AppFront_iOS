@@ -7,6 +7,8 @@ target 'comisapolive.app' do
 
   # Pods for comisapolive.app
   pod 'Google-Mobile-Ads-SDK'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
 
   target 'comisapolive.appTests' do
     inherit! :search_paths

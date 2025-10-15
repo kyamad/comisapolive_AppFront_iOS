@@ -164,6 +164,7 @@
 				A8C9FC7E2D794A4E00B7C025 /* Frameworks */,
 				A8C9FC7F2D794A4E00B7C025 /* Resources */,
 				F19DD8EC8C9FB98A2E74A27E /* [CP] Copy Pods Resources */,
+				989F1B040285C9E44411FB9A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -208,6 +209,7 @@
 				A8C9FC982D794A4F00B7C025 /* Frameworks */,
 				A8C9FC992D794A4F00B7C025 /* Resources */,
 				614D7F9E30006DAA4A3AF355 /* [CP] Copy Pods Resources */,
+				F8D887CBA95DE62699CB2223 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -321,13 +323,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-comisapolive.app-comisapolive.appUITests/Pods-comisapolive.app-comisapolive.appUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-comisapolive.app-comisapolive.appUITests/Pods-comisapolive.app-comisapolive.appUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -354,6 +352,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		989F1B040285C9E44411FB9A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-comisapolive.app/Pods-comisapolive.app-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-comisapolive.app/Pods-comisapolive.app-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-comisapolive.app/Pods-comisapolive.app-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		ECCBE3C0218B6FDB1797F74E /* [CP] Check Pods Manifest.lock */ = {
@@ -386,17 +401,30 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-comisapolive.app/Pods-comisapolive.app-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-comisapolive.app/Pods-comisapolive.app-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
-			outputPaths = (
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-comisapolive.app/Pods-comisapolive.app-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8D887CBA95DE62699CB2223 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-comisapolive.app-comisapolive.appUITests/Pods-comisapolive.app-comisapolive.appUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-comisapolive.app-comisapolive.appUITests/Pods-comisapolive.app-comisapolive.appUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-comisapolive.app-comisapolive.appUITests/Pods-comisapolive.app-comisapolive.appUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -566,6 +594,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = comisapolive.app/comisapolive.app.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
@@ -574,6 +603,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "コミサポライブ";
+				INFOPLIST_KEY_NSCameraUsageDescription = "プロフィール写真の撮影のためにカメラを使用します";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "プロフィール写真の選択のためにフォトライブラリにアクセスします";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -598,6 +629,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = comisapolive.app/comisapolive.app.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
@@ -606,6 +638,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "コミサポライブ";
+				INFOPLIST_KEY_NSCameraUsageDescription = "プロフィール写真の撮影のためにカメラを使用します";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "プロフィール写真の選択のためにフォトライブラリにアクセスします";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
