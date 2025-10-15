@@ -41,7 +41,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         guard let fcmToken = fcmToken else { return }
+#if DEBUG
         print("[Push] FCM registration token: \(fcmToken)")
+#endif
         // TODO: send the token to your application server if needed.
     }
 }

@@ -1,13 +1,14 @@
 # comisapolive.app
 
 ## 概要
-コミサポライブのライバー情報を閲覧・検索できる iOS アプリです。最新ライバーやコラボ可能なライバー、カテゴリ検索など複数の切り口から配信者を探せます。SwiftUI を中心に構築されており、AdMob 広告や口コミ投稿フローにも対応しています。
+コミサポライブのライバー情報を閲覧・検索できる iOS アプリです。最新ライバーやコラボ可能なライバー、カテゴリ検索など複数の切り口から配信者を探せます。SwiftUI を中心に構築されており、AdMob 広告や口コミ投稿フロー、Firebase Cloud Messaging (FCM) を利用したプッシュ通知にも対応しています。
 
 ## 主な機能
 - **ホーム**: 新着ライバーと「コラボ配信OK」ライバーのカルーセル表示、最新記事カード、バナー広告の表示。
 - **カテゴリ検索**: ジャンル／配信プラットフォームからライバーを絞り込み、詳細シートでプロフィールや配信リンクを確認。
 - **フリーワード検索**: 名前・カテゴリ・コメント・スケジュール情報を横断検索。検索履歴の保存・再利用に対応。
 - **ライバー詳細**: プロフィール、フォロワー情報、口コミ評価、配信リンク（`streamingUrls`）を整形して表示。口コミ投稿／閲覧も可能。
+- **プッシュ通知**: Firebase Messaging を通じてお知らせを受信。初回起動時に通知許可をリクエストし、デバイストークンは DEBUG ビルドのみコンソールへ出力します。
 - **マイページ**: 外部ウェブページ（SafariView）へ遷移。
 
 ## 技術スタック
@@ -15,6 +16,7 @@
 - Combine (`ObservableObject`) ベースの状態管理
 - URLSession を用いた API 通信 (`LiverAPIClient`, `ReviewAPIClient`)
 - Google Mobile Ads SDK（`Podfile` で導入）
+- FirebaseCore / FirebaseMessaging (FCM)
 
 ## 開発環境
 - macOS / Xcode 15 以上推奨
@@ -29,10 +31,19 @@
    ```
 2. 依存関係をインストール
    ```bash
-   pod install
+   ~/.rbenv/versions/3.3.0/bin/pod install
    ```
+   ※CocoaPods 1.16.2 で生成されたワークスペースに合わせています。任意の環境で実行する場合は同バージョンを利用してください。
 3. `comisapolive.app.xcworkspace` を Xcode で開きます。
 4. 適切な Team／Bundle Identifier を設定し、シミュレータまたは実機でビルド・実行してください。
+5. Firebase / プッシュ通知を利用する場合は「Firebase・プッシュ通知設定」を参照して追加作業を行ってください。
+
+## Firebase・プッシュ通知設定
+1. Firebase コンソールで iOS アプリを登録し、`GoogleService-Info.plist` をダウンロードして `comisapolive.app/` 配下に配置します。秘匿情報を含むため Git 管理には含めないでください。
+2. Apple Developer アカウントで Push Notifications と Background Modes (Remote notifications) を有効化し、APNs 認証キー（または証明書）を Firebase コンソールへ登録します。
+3. FCM 用の Pod (`Firebase/Core`, `Firebase/Messaging`) が導入済みであることを確認し、`pod install` を再実行します。
+4. 初回起動時に通知許可ダイアログが表示されること、DEBUG ビルドでコンソールに FCM トークンが出力されることを確認してください。取得したトークンは自前のアプリサーバーへ送信するなど安全に扱ってください。
+5. Firebase コンソールまたはアプリサーバー経由でテストメッセージを送信し、フォアグラウンド／バックグラウンド双方で通知が届くかを検証します。
 
 ## プロジェクト構成（主要ファイル）
 - `comisapolive.app/`
@@ -63,4 +74,3 @@
 
 ## ライセンス
 プロジェクト内に明示的なライセンスファイルは含まれていません。必要に応じて追加してください。
-
