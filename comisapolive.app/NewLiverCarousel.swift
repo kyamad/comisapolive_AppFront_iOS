@@ -56,6 +56,41 @@ struct NewLiverCard: View {
     }
 }
 
+private struct WithBackground: View {
+    let dotSpacing: CGFloat = 10
+    let maxRadius: CGFloat = 95
+    
+    private var dots: [(x: CGFloat, y: CGFloat)] {
+        var points: [(CGFloat, CGFloat)] = []
+        for radius in stride(from: 0, through: maxRadius, by: dotSpacing) {
+            let circumference = 2 * .pi * radius
+            let pointCount = max(1, Int(circumference / dotSpacing))
+            for index in 0..<pointCount {
+                let angle = (2 * .pi / CGFloat(pointCount)) * CGFloat(index)
+                let x = radius * cos(angle)
+                let y = radius * sin(angle)
+                points.append((x, y))
+            }
+        }
+        return points
+    }
+    
+    var body: some View {
+        ZStack {
+            Circle()
+                .fill(Color.clear)
+                .frame(width: 250, height: 250)
+            
+            ForEach(Array(dots.enumerated()), id: \.offset) { item in
+                Circle()
+                    .fill(Color.white)
+                    .frame(width: 5, height: 5)
+                    .position(x: item.element.x + 150, y: item.element.y + 100)
+            }
+        }
+    }
+}
+
 #Preview {
     let sampleLiver = Liver(
         id: "sample",

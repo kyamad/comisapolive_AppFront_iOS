@@ -10,7 +10,6 @@ struct Genre: Identifiable {
 struct ContentView: View {
     @State private var selectedTab: Int = 0 // ✅ 選択中のタブを管理
     @State private var selectedPlatform: String? = nil
-    @State private var isShowingDetail: Bool = false // ✅ 詳細画面の表示状態を管理
     @State private var selectedLiver: Liver? = nil
     @StateObject private var apiClient = LiverAPIClient()
     @StateObject private var reviewStatsStore = ReviewStatsStore()
@@ -214,12 +213,6 @@ struct ContentView: View {
                 .presentationDetents([.medium, .large])
                 .presentationBackgroundInteraction(.enabled)
                 .presentationCornerRadius(60)
-        }
-        .sheet(isPresented: $isShowingDetail) {
-            LiverDetails() // 既存の詳細画面（後方互換性のため）
-                .presentationDetents([.medium, .large])
-                .presentationBackgroundInteraction(.enabled)
-                .presentationCornerRadius(50)
         }
     }
 }

@@ -83,7 +83,39 @@ struct ReviewsView: View {
 }
 
 #Preview {
+    let sampleLiver = Liver(
+        id: "sample",
+        originalId: "1",
+        name: "プレビューライバー",
+        platform: "YouTube",
+        followers: 1234,
+        imageUrl: "/api/images/sample.jpg",
+        actualImageUrl: nil,
+        detailUrl: nil,
+        pageNumber: nil,
+        updatedAt: nil,
+        details: LiverDetailsData(
+            categories: ["ゲーム配信"],
+            detailName: nil,
+            detailFollowers: nil,
+            profileImages: nil,
+            collaborationStatus: nil,
+            collaborationComment: nil,
+            profileInfo: nil,
+            rawProfileTexts: nil,
+            eventInfo: nil,
+            comments: nil,
+            schedules: nil,
+            streamingUrls: nil,
+            genderFound: nil
+        )
+    )
+    
     NavigationStack {
-        LiverDetails()
+        VStack {
+            ReviewsView(liverId: sampleLiver.originalId)
+                .padding()
+            Spacer()
+        }
     }
 }

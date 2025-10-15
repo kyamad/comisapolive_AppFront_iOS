@@ -1,14 +1,8 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var selectedTab: Int = 0
-    @State private var selectedPlatform: String? = "youtube"
-    @State private var scrollPositionNewLiver: Int = 0 // ✅ Newライバー用
-    @State private var scrollPositionColaboLiver: Int = 0 // ✅ コラボ配信OKライバー用
     @State private var selectedLiver: Liver? = nil
     @StateObject private var apiClient = LiverAPIClient()
-
-    private let totalItems = 5 // ✅ 画像の総数
 
     var body: some View {
         VStack(spacing: 0) {

@@ -1,3 +1,4 @@
+#if DEBUG
 import SwiftUI
 
 struct DebugLiverDataView: View {
@@ -145,3 +146,4 @@ struct DetailRow: View {
 #Preview {
     DebugLiverDataView()
 }
+#endif

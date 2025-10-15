@@ -6,14 +6,8 @@ struct TopView: View {
     }
 }
 
-extension View {
-    func navigationStack() -> some View {
-        NavigationStack {
-            self
-        }
-    }
-}
-
+#if DEBUG
 #Preview {
     DebugLiverDataView()
 }
+#endif
